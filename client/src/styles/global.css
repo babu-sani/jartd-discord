@@ -1,0 +1,42 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+@font-face { font-family: 'SourGummy'; src: url('/fonts/SourGummy-Regular.ttf'); font-weight: 400; }
+@font-face { font-family: 'SourGummy'; src: url('/fonts/SourGummy-SemiBold.ttf'); font-weight: 600; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #0F0E17;
+  color: #FFFFFE;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0 16px;
+}
+
+button {
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+button:active { transform: scale(0.97); }
+
+input, textarea {
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  border: none;
+}
+
+::-webkit-scrollbar { width: 0; height: 0; }
