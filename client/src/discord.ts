@@ -20,11 +20,15 @@ export async function initDiscord(): Promise<void> {
   });
 
   // Step 2: Exchange code for token via our server
-  const res = await fetch('/api/token', {
+  const res = await fetch('/.proxy/api/token', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ code }),
   });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Token exchange failed (${res.status}): ${text.substring(0, 100)}`);
+  }
   const { access_token } = await res.json();
 
   // Step 3: Authenticate
