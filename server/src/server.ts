@@ -18,11 +18,7 @@ const io = new Server(httpServer, {
 app.use(cors());
 app.use(express.json());
 
-// Serve static client files in production
-const clientDist = path.join(__dirname, '../../client/dist');
-app.use(express.static(clientDist));
-
-// ── OAuth2 Token Exchange ─────────────────────────────────────────────────────
+// ── OAuth2 Token Exchange (must be before static files) ───────────────────────
 
 app.post('/api/token', async (req, res) => {
   const { code } = req.body;
@@ -56,6 +52,10 @@ app.post('/api/token', async (req, res) => {
     res.status(500).json({ error: 'Token exchange failed' });
   }
 });
+
+// Serve static client files in production (after API routes)
+const clientDist = path.join(__dirname, '../../client/dist');
+app.use(express.static(clientDist));
 
 // ── Socket.io Game Relay ──────────────────────────────────────────────────────
 
