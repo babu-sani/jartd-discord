@@ -39,12 +39,14 @@ async function bootstrap() {
     registerScreen('game', renderGame);
     navigateTo('lobby');
 
-  } catch (err) {
+  } catch (err: any) {
     console.error('[JARTD] Bootstrap error:', err);
+    const errMsg = err?.message || err?.toString() || 'Unknown error';
     app.innerHTML = `
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:24px;text-align:center;">
         <h2 style="font-family:'Outfit',sans-serif;font-size:20px;color:${Colors.electric_coral};margin-bottom:12px;">Connection Error</h2>
-        <p style="font-size:14px;color:${Colors.muted_lavender};">Could not connect to the game server. Please try launching the Activity again.</p>
+        <p style="font-size:14px;color:${Colors.muted_lavender};margin-bottom:16px;">Could not connect to the game server. Please try launching the Activity again.</p>
+        <p style="font-size:11px;color:${Colors.warm_gray};word-break:break-all;max-width:400px;">Debug: ${errMsg}</p>
       </div>
     `;
   }
