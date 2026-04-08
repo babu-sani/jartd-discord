@@ -20,7 +20,7 @@ export async function initDiscord(): Promise<void> {
   });
 
   // Step 2: Exchange code for token via our server
-  const res = await fetch('/.proxy/api/token', {
+  const res = await fetch('/api/token', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ code }),
