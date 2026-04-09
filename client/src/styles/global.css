@@ -3,25 +3,24 @@
 @font-face { font-family: 'SourGummy'; src: url('/fonts/SourGummy-Regular.ttf'); font-weight: 400; }
 @font-face { font-family: 'SourGummy'; src: url('/fonts/SourGummy-SemiBold.ttf'); font-weight: 600; }
 
-body {
+html, body {
   font-family: 'DM Sans', sans-serif;
   background: #0F0E17;
   color: #FFFFFE;
-  min-height: 100vh;
-  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
 }
 
 #app {
   width: 100%;
-  max-width: 520px;
-  margin: 0 auto;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 0 16px;
+  overflow-y: auto;
 }
 
 button {

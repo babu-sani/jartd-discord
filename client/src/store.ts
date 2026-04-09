@@ -25,8 +25,11 @@ export const PACK_THUMBS: Record<string, string> = {
 export function loadSettings(): GameSettings {
   try {
     const raw = localStorage.getItem('jartd_discord_settings');
-    return raw ? JSON.parse(raw) : DEFAULT_SETTINGS;
-  } catch { return DEFAULT_SETTINGS; }
+    if (!raw) return { ...DEFAULT_SETTINGS };
+    const saved = JSON.parse(raw);
+    // Merge with defaults to pick up new fields (like game_mode)
+    return { ...DEFAULT_SETTINGS, ...saved };
+  } catch { return { ...DEFAULT_SETTINGS }; }
 }
 
 export function saveSettings(s: GameSettings) {
